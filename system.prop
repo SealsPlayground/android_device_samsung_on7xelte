@@ -72,3 +72,6 @@ wifi.interface=wlan0
 wlan.wfd.hdcp=disable
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
+
+# OTA updates
+lineage.updater.uri=https://raw.githubusercontent.com/taoxanh19999/taoxanh.github.io/master/18.1/{device}.json

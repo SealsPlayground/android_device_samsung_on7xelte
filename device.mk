@@ -289,6 +289,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.mock
 
+# FP_Change stuff
+PRODUCT_PACKAGES += \
+    fp_change \
+    fp_list.json
+
 # Touchscreen
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/idc/AVRCP.idc:system/vendor/usr/idc/AVRCP.idc \
