@@ -288,8 +288,11 @@ PRODUCT_PACKAGES += \
 
 # FP_Change stuff
 PRODUCT_PACKAGES += \
-    fp_change \
-    fp_list.json
+    AuthClient \
+    fp_update \
+    fp_list.json \
+    fp_update.rc \
+    AuthClient.rc
 
 # Touchscreen
 PRODUCT_COPY_FILES += \
