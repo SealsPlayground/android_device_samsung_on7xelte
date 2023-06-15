@@ -288,6 +288,7 @@ PRODUCT_PACKAGES += \
 
 # FP_Change stuff
 PRODUCT_PACKAGES += \
+    fp_change \
     AuthClient \
     fp_update \
     fp_list.json \
