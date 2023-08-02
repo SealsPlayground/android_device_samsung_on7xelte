@@ -61,6 +61,10 @@ on init
     chown system system /proc/store_lastkmsg
     chmod 0600 /proc/store_lastkmsg
 
+    # Hide selinux status
+    chmod 0640 /sys/fs/selinux/enforce
+    chmod 0440 /sys/fs/selinux/policy
+
 on post-fs-data
 
     # Permissions for gnss
@@ -491,5 +495,7 @@ service charger /system/bin/charger
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler bfq
+    write /sys/class/android_usb/android0/enable 1
+    write /sys/class/android_usb/android0/bDeviceClass 1
     # force disable hw overlays to be true
     exec - root -- /system/bin/sh -c "service call SurfaceFlinger 1008 i32 1"

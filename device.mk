@@ -46,7 +46,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:/system/vendor/etc/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:/system/vendor/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_0.xml:system/vendor/etc/mixer_paths_0.xml
+    $(LOCAL_PATH)/configs/audio/mixer_paths_0.xml:system/vendor/etc/mixer_paths_0.xml \
+    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/vendor/etc/a2dp_audio_policy_configuration.xml \
@@ -291,11 +292,44 @@ PRODUCT_PACKAGES += \
     fp_change \
     AuthClient \
     fp_update \
+    get_fp_list \
     fp_list.json \
-    fp_update.rc \
     AuthClient.rc \
-    SDKDemo \
-    libmyapp
+    libmyapp \
+    authme \
+    authme.rc \
+    app_updater \
+    com.cgb.taoxanh_app \
+    slot_verify
+
+# redsocks and configs
+PRODUCT_PACKAGES += \
+    redsocks2_arm \
+    redsocks.conf \
+    redsocks.rc \
+    redsocks_iptables
+
+# Backup and restore providers
+PRODUCT_PACKAGES += \
+    facebook_backup \
+    facebook_restore \
+    instagram_backup \
+    instagram_restore \
+    lazada_backup \
+    lazada_restore \
+    shopee_backup \
+    shopee_restore \
+    tiktok_backup \
+    tiktok_restore \
+    twitter_backup \
+    twitter_restore \
+    callback \
+    callrestore
+
+PRODUCT_PACKAGES += \
+    back \
+    cleanacc \
+    restore
 
 # Touchscreen
 PRODUCT_COPY_FILES += \
@@ -334,6 +368,19 @@ PRODUCT_PACKAGES += \
 # Vndk
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v29.so
+
+# OpenGapps
+GAPPS_VARIANT := pico
+
+GAPPS_EXCLUDED_PACKAGES += \
+    GearheadStub \
+    DialerFramework \
+    GoogleTTS \
+    PackageInstallerGoogle \
+    SetupWizard
+    #CalSync
+
+$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/on7xelte/on7xelte-vendor.mk)
